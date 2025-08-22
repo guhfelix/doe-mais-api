@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Registra qualquer serviço de aplicação.
      */
     public function register(): void
     {
@@ -15,16 +15,17 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Bootstrap qualquer serviço de aplicação.
+     * Carrega as rotas da API e web.
      */
     public function boot(): void
     {
-        // ⬇️ carrega as rotas da API com prefixo /api e middleware 'api'
+        // Carrega as rotas da API com prefixo /api e middleware 'api'
         \Illuminate\Support\Facades\Route::middleware('api')
             ->prefix('api')
             ->group(base_path('routes/api.php'));
 
-        // ⬇️ carrega as rotas web
+        // Carrega as rotas web
         \Illuminate\Support\Facades\Route::middleware('web')
             ->group(base_path('routes/web.php'));
     }
